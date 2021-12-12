@@ -25,32 +25,17 @@ app.use(cors());
 const client = new Client(dbConfig);
 client.connect();
 
-// Types
-interface Member {
-  member_id: number;
-  member_first_name: string;
-  member_last_name: string;
-  birthday: string;
-  birth_place: string;
-  nickname?: string;
-}
-
 // Create your endpoints here
-
-// Get all member information
-app.get("/members", async (req, res) => {
+app.get("", async (req, res) => {
   try {
-    const dbRes = await client.query(
-      "SELECT member_id, member_first_name, member_last_name, birthday, birth_place, nickname FROM names JOIN birthdays USING (member_id) LEFT JOIN nicknames USING (member_id)"
-    );
-    const members: Member[] = dbRes.rows;
-    res.json(members);
+    const dbRes = await client.query("");
+    res.json(dbRes.rows);
   } catch (error) {
     console.error(error);
   }
 });
 
-//Start the server on the given port
+// Start the server on the given port
 const port = process.env.PORT;
 if (!port) {
   throw "Missing PORT environment variable.  Set it in .env file.";
