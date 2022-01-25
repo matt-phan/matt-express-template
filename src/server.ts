@@ -26,13 +26,12 @@ const client = new Client(dbConfig);
 client.connect();
 
 // Create your endpoints here
-app.get("", async (req, res) => {
-  try {
-    const dbRes = await client.query("");
-    res.json(dbRes.rows);
-  } catch (error) {
-    console.error(error);
-  }
+app.get("/stuff", async (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "this is a test",
+    data: { stuff: "stuff" },
+  });
 });
 
 // Start the server on the given port

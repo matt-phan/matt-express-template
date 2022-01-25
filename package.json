@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "start:dev": "LOCAL=true ts-node src/server.ts",
-    "start:devh": "ts-node src/server.ts",
+    "start:dev": "LOCAL=true nodemon src/server.ts",
+    "start:devh": "nodemon src/server.ts",
     "format": "prettier --write src",
     "format:check": "prettier --check src",
     "lint": "eslint src",
@@ -20,6 +20,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^8.4.1",
     "express": "^4.17.1",
+    "nodemon": "^2.0.15",
     "pg": "^8.5.1",
     "prettier": "^2.5.1"
   },
